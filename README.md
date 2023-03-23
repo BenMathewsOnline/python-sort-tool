@@ -1,42 +1,17 @@
-import os
-import shutil
+# File Sorting Automation Tool
 
-def sort_files_by_extension(directory):
-    for filename in os.listdir(directory):
-        # Skip directories and only process files
-        if os.path.isfile(os.path.join(directory, filename)):
-            file_extension = os.path.splitext(filename)[1].lower()
+This Python script helps you sort files in a directory by their file extension. It creates folders named after the file extensions and moves the files into their respective folders. After sorting the files by their extension, the script also sorts the files alphabetically within each folder.
 
-            # Create a folder for each file extension if it doesn't exist
-            extension_folder = os.path.join(directory, file_extension)
-            if not os.path.exists(extension_folder):
-                os.makedirs(extension_folder)
+## Requirements
 
-            # Move the file to its corresponding folder
-            shutil.move(os.path.join(directory, filename), os.path.join(extension_folder, filename))
+- Python 3.x
 
-def sort_files_alphabetically(directory):
-    for foldername in os.listdir(directory):
-        folder_path = os.path.join(directory, foldername)
+## How to Use
 
-        # Skip files and only process folders
-        if os.path.isdir(folder_path):
-            files = sorted(os.listdir(folder_path))
-            for index, filename in enumerate(files, start=1):
-                old_path = os.path.join(folder_path, filename)
-                new_path = os.path.join(folder_path, f"{index:03}_{filename}")
-                os.rename(old_path, new_path)
-
-if __name__ == "__main__":
-    base_directory = os.getcwd()
-
-    # Sort files by their file extension
-    sort_files_by_extension(base_directory)
-
-    # Sort files alphabetically within each folder
-    sort_files_alphabetically(base_directory)
-
-python file_sorting_automation.py
+1. Place the `file_sorting_automation.py` script in the directory where you want to sort the files.
+2. Open a terminal or command prompt.
+3. Navigate to the directory where the script is located.
+4. Run the following command: python file_sorting_automation.py
 
 
 5. The script will sort the files in the directory by their file extension and then sort them alphabetically within each folder.
@@ -50,3 +25,5 @@ python file_sorting_automation.py
 ## License
 
 This project is released under the MIT License. See the `LICENSE` file for more information.
+
+
